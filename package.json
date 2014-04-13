@@ -1,0 +1,14 @@
+{
+  "name": "jwt-node-express",
+  "description": "A demonstration of using JWT tokens",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",    
+    "colors": "0.6.2",
+    "mongoose": "3.8.8",    
+    "bcrypt": "0.7.7",
+    "moment": "2.6.0",
+    "jwt-simple": "0.2.0"    
+  }
+}
