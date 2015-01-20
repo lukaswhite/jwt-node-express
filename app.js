@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost/jwttest');
  * NOTE: purposely not using var so that app is accesible in modules.
  */
 app = express()
-
+global.app = app;
 /**
  * Set the secret for encoding/decoding JWT tokens
  */
