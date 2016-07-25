@@ -4,6 +4,7 @@
 var express = require('express')
 var colors = require('colors')
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var url = require('url')
 var jwt = require('jwt-simple');
 
@@ -22,6 +23,7 @@ var jwtauth = require('./lib/jwtauth')
  */
 mongoose.connect('mongodb://localhost/jwttest');
 
+
 /**
  * Create the express app
  * NOTE: purposely not using var so that app is accesible in modules.
@@ -33,16 +35,9 @@ app = express()
  */
 app.set('jwtTokenSecret', 'secret-value')
 
-/**
- * A simple middleware to restrict access to authenticated users.
- */
-var requireAuth = function(req, res, next) {
-	if (!req.user) {
-		res.end('Not authorized', 401)
-	}	else {
-		next()
-	}
-}
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 /**
  * Load up the controllers
@@ -60,6 +55,6 @@ var server = app.listen(3000, function() {
 /**
  * An example protected route.
  */
-app.get('/secret', express.bodyParser(), jwtauth, requireAuth, function(req, res){	
+app.get('/secret', jwtauth, function(req, res){
 	res.send('Hello ' + req.user.username)
 })

@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "3.x",    
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
     "colors": "0.6.2",
-    "mongoose": "3.8.8",    
-    "bcrypt": "0.7.7",
-    "moment": "2.6.0",
-    "jwt-simple": "0.2.0"    
+    "express": "3.x",
+    "jwt-simple": "0.2.0",
+    "moment": "^2.14.1",
+    "mongoose": "^4.5.7"
   }
 }
