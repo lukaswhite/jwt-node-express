@@ -13,7 +13,10 @@ var UserModel = require('./models/user')
 /**
  * Connect to the database
  */
-mongoose.connect('mongodb://localhost/jwttest');
+
+//  mongoose.connect('mongodb://localhost/jwttest');
+
+mongoose.connect("mongodb://localhost:27017/jwttest");
 
 var db = mongoose.connection;
 
@@ -27,11 +30,10 @@ db.once('open', function callback () {
 	
 	user.save(function(err){
 		if (err) {
-			console.log('Could not save user.'.red)
+			console.log('%s'.red, err) //Explaining error reason.
 		} else {
 			console.log('Database seeded'.green)
 		}
-
 		process.exit()
 	})	
 

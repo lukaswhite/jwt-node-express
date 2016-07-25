@@ -9,7 +9,7 @@
  */
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 
 var SALT_WORK_FACTOR = 10;
 
@@ -31,7 +31,6 @@ UserSchema.pre('save', function(next) {
         // hash the password along with our new salt
         bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err);
-
             // override the cleartext password with the hashed one
             user.password = hash;
             next();
